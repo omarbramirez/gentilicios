@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchXMLData } from "../api/dataHandlers";
 
 function SearchBar() {
-  const [data, setData] = useState(null);
+  const [definitions, setDefinitions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -10,13 +10,21 @@ function SearchBar() {
     const loadData = async () => {
       try {
         const xmlDoc = await fetchXMLData(); // Fetch the XML data
-        setData(xmlDoc); // Set the XML document to state
+
+        // Extract <Definition.Definición> elements
+        const definitionElements = xmlDoc.getElementsByTagName("Lemma");
+        const definitionsArray = Array.from(definitionElements).map(
+          (el) => el.textContent
+        );
+
+        setDefinitions(definitionsArray); // Set definitions to state
       } catch (err) {
         setError(err); // Handle errors
       } finally {
         setLoading(false); // Set loading to false
       }
     };
+
     loadData(); // Call the async function
   }, []);
 
@@ -30,14 +38,14 @@ function SearchBar() {
 
   return (
     <div className="search-container">
-      <input
-        type="text"
-        className="search-input"
-        placeholder="Search..."
-        aria-label="Search"
-      />
-      <button className="search-button">Search</button>
-      <div>{data && data.length > 0 && <p> hello {data[0]}</p>}</div>
+      <div>
+        <h3>Definitions:</h3>
+        <ul>
+          {definitions.map((definition, index) => (
+            <li key={index}>{definition}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
