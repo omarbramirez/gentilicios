@@ -87,6 +87,7 @@ export const fetchXMLData = async()=>{
         }
 
         getLemma();
+        console.log(definitionsArray[0])
         return definitionsArray;
     }catch(err){
         console.error('Error converting XML into JSON', err)

@@ -1,0 +1,14 @@
+// Typography
+$font-family-primary: 'Roboto', sans-serif;
+$font-family-secondary: 'Open Sans', sans-serif;
+$font-size-base: 16px;
+$font-size-small: 15px;
+$font-size-large: 18px;
+$font-size-title: calc($font-size-base * 1.5);
+$font-size-subtitle: calc($font-size-base * 1.2);
+
+
+// // Spacing
+$spacing-unit: 8px;
+$content-padding: 0.1rem 0.6rem;
+$content-margin-bottom: 1.5rem;

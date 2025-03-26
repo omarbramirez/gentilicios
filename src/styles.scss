@@ -1,0 +1,32 @@
+@use 'mixins';
+@use 'reset';
+@use 'variables';
+
+#root{
+    margin: 20px;
+}
+.search--container{
+    @include mixins.flex-center-column;
+    
+}
+.search--input{
+    margin: auto;
+    margin-bottom:  variables.$content-margin-bottom;
+}
+.alphabet--box{
+    @include mixins.flex-center-row;
+    flex-wrap: wrap;
+    margin-bottom:  variables.$content-margin-bottom;
+}
+.alphabet--element{
+    margin: auto 1rem;
+}
+
+.results--container{
+    @include mixins.flex-center-column;
+}
+
+.lemma{
+    display: inline-block;
+    margin-bottom:  variables.$content-margin-bottom;
+}
