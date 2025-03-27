@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchXMLData } from "../api/dataHandlers";
 import { handleSearching } from "../controllers/searchControllers";
 import { alphabet } from "../utils/searchBarUtils";
+import Results from "./Results";
 
 function SearchBar() {
   const [data, setData] = useState(null);
@@ -15,7 +16,6 @@ function SearchBar() {
       try {
         const xmlDoc = await fetchXMLData();
         setData(xmlDoc);
-        setGrammaticalCategories(["adj."]);
       } catch (err) {
         setError(err);
       }
@@ -35,7 +35,7 @@ function SearchBar() {
   const inputHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
-    // handleSearching(inputText, data);
+    handleSearching(inputText, data);
   };
 
   return (
@@ -66,34 +66,30 @@ function SearchBar() {
             ))}
         </ul>
         {/* {grammaticalCategories && (
-          <select name="select">
-            <option value=" ">Categoría Gramatical...</option>
-            {grammaticalCategories.map((category) => (
-              <option key={`category-${category}`} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        )} */}
+            <select name="select">
+              <option value=" ">Categoría Gramatical...</option>
+              {grammaticalCategories.map((category) => (
+                <option key={`category-${category}`} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          )} */}
       </div>
-      <div className="results--container">
+      <Results searchedData={searchedData} />
+      {/* <div className="results--container">
         {searchedData ? (
           searchedData.map((lemma, index) => (
             <span key={`lemma-${index}`} className="lemma">
               <p>
                 {lemma.lemmaSign} {lemma.categoriaGramatical}
-                {lemma.definiciones.map((def) => (
-                  <p key={`definicion-${def.definicion}-${def.acepcion}`}>
-                    {def.acepcion}: {def.definicion}
-                  </p>
-                ))}
               </p>
             </span>
           ))
         ) : (
           <div>Loading...</div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

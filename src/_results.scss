@@ -1,0 +1,75 @@
+.results--container {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .lemma {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .lemma-sign {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .sense {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid #eee;
+  }
+  
+  .sense-header {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .definition {
+    margin: 1rem 0;
+    padding-left: 1rem;
+  }
+  
+  .definition-text {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .acepcion {
+    font-weight: bold;
+    color: #3498db;
+  }
+  
+  .utc {
+    color: #7f8c8d;
+    font-size: 0.9em;
+  }
+  
+  .example {
+    background: #f0f3f4;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+  }
+  
+  .example-text {
+    font-style: italic;
+    margin-bottom: 0.3rem;
+  }
+  
+  .example-source {
+    text-align: right;
+    color: #666;
+    font-size: 0.85rem;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: #7f8c8d;
+  }

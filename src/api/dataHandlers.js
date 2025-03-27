@@ -1,93 +1,88 @@
 import axios from 'axios';
-// Fetch and parse XML and convert it into JSON
+
 export const fetchXMLData = async()=>{
-    let definitionsArray=[]
-  
+    let definitionsArray=[];
+
     try{
         const response = await axios.get('/db/gentilicios.xml');
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(response.data, "text/xml");
         const definitionElements = xmlDoc.getElementsByTagName("Lemma");
-        
-        const getBolds = (bolds, def)=>{
-            const limit = bolds.length;
-            let counter = 0;
-            while (counter < limit){
-                def.bolds.push(bolds[counter]?.textContent || '')
-                counter += 1;
-            }
-        }
 
-        const getDefiniciones = (currentElement, currentArray)=>{
-            let limit = currentElement.getElementsByTagName("Definition").length;
+        const getExamples = (currentDefinition, allExamples)=>{
+            let limit = allExamples.length;
             let counter = 0;
             while(counter < limit) {
-                let def ={
-                    acepcion:'',
-                    definicion:'',
-                    UTC :'',
+                let example ={
                     example: '',
-                    source: '',
-                    adHoc: '',
-                    bolds:[]
+                    source: ''
                 }
-           def["acepcion"]= currentElement.getElementsByTagName("Definition.Acepción")[counter]?.textContent || '';
-            def["definicion"]= currentElement.getElementsByTagName("Definition.Definición")[counter]?.textContent || '';
-            def["UTC"]= currentElement.getElementsByTagName("Definition.UTC")[counter]?.textContent || '';
-            def["example"]= currentElement.getElementsByTagName("Example.Example")[counter]?.textContent || '';
-            def["source"]= currentElement.getElementsByTagName("Example.Source")[counter]?.textContent || '';
-            def["adHoc"]= currentElement.getElementsByTagName("Example.Ad.hoc")[counter]?.textContent || '';
-            let bolds = currentElement.getElementsByTagName("Bold");
-            if(bolds.length > 0){
-                getBolds(bolds, def)
-            }
-            currentArray.definiciones.push(def)
-            counter += 1;
-            }
-        }
-
-        const getSenseNumbers = (currentElement,senseNums,lemma)=>{
-            let limit = senseNums.length;
-            let counter = 0;
-            while(counter < limit){
-                let sensenum = {
-                    number:'',
-                    definiciones:[]
-                }
-                sensenum["number"] = senseNums[counter]?.textContent || '';
-                let sense = currentElement.getElementsByTagName("Sense")[counter]
-                getDefiniciones(sense,sensenum)
-                lemma.senseNumbers.push(sensenum)
+                example['example'] = allExamples[counter].getElementsByTagName("Example.Example")[0]?.innerHTML;
+                example["source"] = allExamples[counter].getElementsByTagName("Example.Source")[0]?.textContent;
+                currentDefinition.examples.push(example)
                 counter += 1;
             }
             
         }
+        const getDefinitions=(currentSense, allDefinitions)=>{
+            let limit = allDefinitions.length;
+            let counter = 0;
+            while(counter < limit) {
+                let definition ={
+                    acepción: '',
+                    definición: '',
+                    utc:'',
+                    examples:[]
+                }
+                definition["acepción"]=allDefinitions[counter].getElementsByTagName("Definition.Acepción")[0]?.textContent;
+                definition["definición"]=allDefinitions[counter].getElementsByTagName("Definition.Definición")[0]?.innerHTML;
+                definition["utc"]=allDefinitions[counter].getElementsByTagName("Definition.UTC")[0]?.textContent;
+                let allExamples = allDefinitions[counter].getElementsByTagName("Example");
 
-        const getLemma = ()=>{
-            Array.from(definitionElements).map(
-                (el) => {     
-                  const lemma = {
-                      lemmaSign: '',
-                      categoriaGramatical : '',
-                      senseNumbers:[],
-                      definiciones:[]
-                  }   
-                  lemma["lemmaSign"]= el.getElementsByTagName("Lemma.LemmaSign")[0]?.textContent || '';
-                  lemma["categoriaGramatical"]= el.getElementsByTagName("Sense.Categoría.Gramatical")[0]?.textContent || '';
-                  let senseNums = el.getElementsByTagName("Sense.SenseNumber");
-                  
-                  if(senseNums.length > 0) {
-                    getSenseNumbers(el, senseNums, lemma)
-                }else{
-                    getDefiniciones(el,lemma);
-                  };
-                  definitionsArray.push(lemma);
-                  }
-              );
+                currentSense.definitions.push(definition)
+                getExamples(definition, allExamples)
+                counter += 1;
+            }
+        }
+        const getSenses=(currentLemma, allSenses)=>{
+            let limit = allSenses.length;
+            let counter = 0;
+            while(counter < limit) {
+                let sense = {
+                    senseNumber: '',
+                    categoríaGramatical: '',
+                    definitions:[]
+                }
+                
+                sense["senseNumber"] = allSenses[counter].getElementsByTagName("Sense.SenseNumber")[0]?.textContent;
+                sense["categoríaGramatical"] = allSenses[counter].getElementsByTagName("Sense.Categoría.Gramatical")[0]?.textContent;
+                let allDefinitions = allSenses[counter].getElementsByTagName("Definition");
+                currentLemma.sense.push(sense)
+                getDefinitions(sense, allDefinitions)
+                counter += 1;
+            }
+
         }
 
-        getLemma();
-        console.log(definitionsArray[0])
+        const getLemmas =()=>{
+            let limit = definitionElements.length;
+            let counter = 0;
+            while(counter < limit) {
+                let lemma = {
+                    lemmaSign: '',
+                    sense:[]
+                }
+                lemma["lemmaSign"]= definitionElements[counter].getElementsByTagName("Lemma.LemmaSign")[0]?.textContent;
+                let allSenses = definitionElements[counter].getElementsByTagName("Sense");
+                
+                definitionsArray.push(lemma)
+                getSenses(lemma, allSenses)
+                counter += 1;
+            }
+        }
+
+        getLemmas();
+        console.log(definitionsArray[190])
         return definitionsArray;
     }catch(err){
         console.error('Error converting XML into JSON', err)
