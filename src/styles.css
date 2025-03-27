@@ -222,6 +222,11 @@ hr {
   color: #7f8c8d;
 }
 
+.bold {
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
 #root {
   margin: 20px;
 }

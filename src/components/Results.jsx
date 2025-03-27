@@ -29,9 +29,14 @@ function Results({ searchedData }) {
                         <span className="acepcion">{definition.acepción}.</span>
                       )}{" "}
                       {definition.definición && (
-                        <span className="definicion">
-                          {definition.definición}
-                        </span>
+                        <span
+                          className="definicion"
+                          dangerouslySetInnerHTML={{
+                            __html: definition.definición
+                              .replace(/<Bold>/g, "<strong class='bold'>")
+                              .replace(/<\/Bold>/g, "</strong>"),
+                          }}
+                        />
                       )}
                       {definition.utc && (
                         <span className="utc"> {definition.utc}</span>
@@ -42,8 +47,20 @@ function Results({ searchedData }) {
                     {definition.examples?.map((example, exIndex) => (
                       <div key={`ex-${exIndex}`} className="example">
                         {example.example && (
-                          <p className="example-text">
-                            "{example.example.replace(/<Bold>|<\/Bold>/g, "")}"
+                          <p
+                            className="example-text"
+                            dangerouslySetInnerHTML={{
+                              __html: example.example
+                                .replace(/<Bold>/g, "<strong class='bold'>")
+                                .replace(/<\/Bold>/g, "</strong>"),
+                            }}
+                          >
+                            {/* {example.example
+                              ? `"${example.example
+                                  .replace(/<Bold>/g, "")
+                                  .replace(/<\/Bold>/g, "")
+                                  .trim()}"`
+                              : null} */}
                           </p>
                         )}
                         {example.source && (
