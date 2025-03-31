@@ -82,10 +82,21 @@ export const fetchXMLData = async()=>{
         }
 
         getLemmas();
-        console.log(definitionsArray[190])
         return definitionsArray;
     }catch(err){
         console.error('Error converting XML into JSON', err)
+        throw err;
+    }
+}
+
+export const fetchTableData = async()=>{
+    try{
+        const response = await axios.get('/db/_tablaDeGentilicios.json');
+        const regionsArray = response.data.regions;
+        console.log(response.data.regions)
+        return regionsArray;
+    }catch(err){
+        console.error('Error fetching tableData', err)
         throw err;
     }
 }

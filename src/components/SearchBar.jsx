@@ -9,7 +9,7 @@ function SearchBar() {
   const [searchedData, setSearchedData] = useState(null);
   const [error, setError] = useState(null);
   const [inputText, setInputText] = useState("");
-  const [grammaticalCategories, setGrammaticalCategories] = useState(null);
+  // const [grammaticalCategories, setGrammaticalCategories] = useState(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -44,8 +44,8 @@ function SearchBar() {
         <input
           type="text"
           className="search--input"
-          placeholder="Buscar..."
-          aria-label="Buscar"
+          placeholder="Buscar gentilicio..."
+          aria-label="Buscar gentilicio"
           onChange={inputHandler}
           required
         />

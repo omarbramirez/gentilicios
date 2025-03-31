@@ -77,7 +77,7 @@ function Results({ searchedData }) {
           </div>
         ))
       ) : (
-        <div className="loading">Loading...</div>
+        <div className="loading">Cargando...</div>
       )}
     </div>
   );

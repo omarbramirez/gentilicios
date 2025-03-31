@@ -1,0 +1,68 @@
+{
+    "regions":[
+        {
+            "region": "COSTA",
+            "gentilicios": ["costeño, -a", "mono, -a"],
+            "content":[
+                {
+                    "provincia":"El Oro",
+                    "provincia_gentilicio":"orense","provincia_variante": "",
+                    "ciudad": "Machala",
+                    "ciudad_gentilicio": "machaleño, -a",
+                    "ciudad_variante": "",
+                    "ciudades_cantones":["Arenillas",
+                    "Atahualpa",
+                    "Balsas",
+                    "Chilla",
+                    "El Guabo",
+                    "Huaquillas",
+                    "Las Lajas",
+                    "Marcabelí",
+                    "Pasaje",
+                    "Piñas",
+                    "Portovelo",
+                    "Santa Rosa",
+                    "Zaruma"],
+                    "gentilicios": [
+                    "arenillense",
+"atahualpense",
+"balsense",
+"chillano, -a",
+"guabeño, -a",
+"huaquillense",
+"lajense",
+"marcabelense",
+"pasajeño, -a",
+"piñasiense",
+"portovelense",
+"santarroseño, -a",
+"zarumeño, -a"
+                ],
+                "variantes":[]
+                },
+                {
+                    "provincia": "Esmeraldas",
+                    "provincia_gentilicio": "esmeraldeño, -a",
+                    "provincia_variante": "",
+                    "ciudad": "Esmeraldas",
+                    "ciudad_gentilicio": "esmeraldeño, -a",
+                    "ciudad_variante": "",
+                    "ciudades_cantones": ["Atacames",
+                    "Eloy Alfaro",
+                    "Muisne",
+                    "Quinindé",
+                    "Rioverde",
+                    "San Lorenzo"],
+                    "gentilicios": ["atacameño, -a",
+                    "eloyalfarino", 
+                    "muisneño, -a",
+                    "quinindeño, -a",
+                    "rioverdeño, -a",
+                    "sanlorenceño, -a"],
+                    "variantes": ["","alfarino, -a"]
+                }
+            ]
+
+        }
+    ]
+}
