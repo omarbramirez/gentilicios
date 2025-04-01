@@ -17,24 +17,24 @@ function Table_() {
           <table className="column--region">
             <thead>
               <tr>
-                <th scope="col">REGIÓN</th>
+                <th className="column--region--element">REGIÓN</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th>{row.region}</th>
+                <td className="column--region--element">{row.region}</td>
               </tr>
               <tr>
                 <td>
                   {row.gentilicios?.map((gentilicio) => (
-                    <p>{gentilicio}</p>
+                    <p className="column--region--element">{gentilicio}</p>
                   ))}
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <table>
+          <table className="table--content">
             <thead>
               <tr>
                 <th scope="col">PROVINCIA</th>

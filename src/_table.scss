@@ -1,24 +1,105 @@
-@use 'mixins';
-.table--container{
-    overflow-y: scroll;
+/* Contenedor principal - Mantiene el estilo original */
+.table--container {
+  font-family: 'Arial', sans-serif;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
-.table--region{
-    @include mixins.flex-center-row;
-    
+
+/* Contenedor de cada región - Similar a .lemma */
+.table--region {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  display: grid;
+//   grid-template-columns: 200px 1fr;
+  gap: 1rem;
 }
-.column--region{
-    align-self: stretch;
+
+/* Tabla de región (izquierda) */
+.column--region {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
 }
-table {
-    border-collapse: collapse;
-            table-layout: auto;
-            width: 100%;
+.column--region--element{
+    text-align: center;
 }
-th, td{
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-    width: max-content;
-    white-space: nowrap;
-    
+/* Tabla principal (derecha) */
+.table--region > table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+
+}
+
+.table--content{
+    overflow-x: scroll;
+    display: block;
+}
+
+/* Encabezados - Estilo similar a .sense-header */
+th {
+  font-weight: bold;
+  background: #f0f3f4;
+  color: #2c3e50;
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 2px solid #eee;
+  white-space: nowrap;
+}
+
+/* Celdas - Similar a .definition */
+td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* Listas internas - Estilo minimalista */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li p {
+  margin: 4px 0;
+  padding: 4px 0;
+}
+
+/* Estilo para la celda de región - Similar a .lemma-sign */
+.column--region th {
+  font-size: 1.2rem;
+  color: #3498db;
+  background: #f0f3f4;
+}
+
+/* Efecto hover para filas */
+tr:hover td {
+  background-color: #f8f9fa;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .table--region {
+    grid-template-columns: 1fr;
+  }
+  
+  .table--region > table {
+    overflow-x: auto;
+    display: block;
+  }
+}
+
+/* Mantenemos la clase .bold para énfasis */
+.bold {
+  font-weight: bold;
+  color: #1c1c1c;
 }
