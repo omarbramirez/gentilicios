@@ -280,6 +280,7 @@ th {
   text-align: left;
   border-bottom: 2px solid #eee;
   white-space: nowrap;
+  cursor: default;
 }
 
 /* Celdas - Similar a .definition */
@@ -289,6 +290,7 @@ td {
   vertical-align: top;
   line-height: 1.5;
   white-space: nowrap;
+  cursor: default;
 }
 
 /* Listas internas - Estilo minimalista */
@@ -315,16 +317,6 @@ tr:hover td {
   background-color: #f8f9fa;
 }
 
-/* Adaptación móvil */
-@media (max-width: 768px) {
-  .table--region {
-    grid-template-columns: 1fr;
-  }
-  .table--region > table {
-    overflow-x: auto;
-    display: block;
-  }
-}
 /* Mantenemos la clase .bold para énfasis */
 .bold {
   font-weight: bold;
@@ -351,7 +343,7 @@ tr:hover td {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem auto;
 }
 
 .alphabet--element {

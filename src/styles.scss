@@ -18,7 +18,7 @@
 .alphabet--box{
     @include mixins.flex-center-row;
     flex-wrap: wrap;
-    margin-bottom:  variables.$content-margin-bottom;
+    margin-bottom:  variables.$content-margin-bottom auto;
 }
 .alphabet--element{
     margin: auto 1rem;
