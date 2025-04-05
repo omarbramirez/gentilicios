@@ -230,7 +230,6 @@ hr {
 /* Contenedor principal - Mantiene el estilo original */
 .table--container {
   font-family: "Arial", sans-serif;
-  max-width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -243,19 +242,27 @@ hr {
   border-radius: 8px;
   display: grid;
   gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem auto;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: center;
 }
 
 /* Tabla de región (izquierda) */
 .column--region {
-  width: 100%;
+  max-width: 45%;
   border-collapse: collapse;
   background: white;
   border-radius: 6px;
-  overflow: hidden;
 }
 
 .column--region--element {
   text-align: center;
+  min-width: 400px;
 }
 
 /* Tabla principal (derecha) */
@@ -267,8 +274,10 @@ hr {
 }
 
 .table--content {
-  overflow-x: scroll;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 45%;
 }
 
 /* Encabezados - Estilo similar a .sense-header */
@@ -281,6 +290,7 @@ th {
   border-bottom: 2px solid #eee;
   white-space: nowrap;
   cursor: default;
+  width: 33%;
 }
 
 /* Celdas - Similar a .definition */
@@ -291,6 +301,8 @@ td {
   line-height: 1.5;
   white-space: nowrap;
   cursor: default;
+  text-align: left;
+  width: 33%;
 }
 
 /* Listas internas - Estilo minimalista */
@@ -323,14 +335,379 @@ tr:hover td {
   color: #1c1c1c;
 }
 
+.provinces--lists {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 40vw;
+}
+
+.provinces--lists > button {
+  margin: auto 1rem;
+}
+
+/* Estilos para los botones */
+.provinces--lists > button {
+  margin: 1rem;
+  padding: 10px 20px; /* Espaciado del botón */
+  font-size: 1rem;
+  background-color: #3498db; /* Fondo azul elegante */
+  color: white; /* Texto blanco */
+  border: 2px solid transparent; /* Contorno transparente por defecto */
+  border-radius: 6px; /* Bordes redondeados */
+  text-align: center;
+  cursor: pointer; /* Apunta que es interactivo */
+  font-weight: 600; /* Peso de la fuente */
+  transition: all 0.3s ease; /* Transición suave para todos los cambios */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo cuando el botón es hover o enfocado */
+.provinces--lists > button:hover,
+.provinces--lists > button:focus {
+  background-color: #2980b9; /* Fondo ligeramente más oscuro en hover */
+  color: #f0f0f0; /* Texto blanco para el hover */
+  border-color: #3498db; /* Acentuar el contorno */
+  transform: translateY(-2px); /* Eleva el botón ligeramente */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Estilo cuando el botón es clickeado */
+.provinces--lists > button:active {
+  transform: translateY(1px); /* Hace que el botón se "hunda" un poco al presionar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Vuelve la sombra a su estado inicial */
+}
+
+/* Efecto de enfoque (focus) */
+.provinces--lists > button:focus {
+  outline: none; /* Eliminar el contorno predeterminado */
+  border-color: #2980b9; /* Contorno de color más oscuro en foco */
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* Añadir un resplandor sutil al foco */
+}
+
+/* Estilo para la fila <tr> completa (no solo el botón) */
+.column--region--button {
+  cursor: pointer; /* Aparece como clickeable */
+  transition: all 0.3s ease; /* Transición suave para todos los cambios */
+  background-color: #f9f9f9; /* Fondo claro por defecto para la fila */
+  border-radius: 6px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para toda la fila */
+}
+
+/* Estilos para la celda <td> que contiene el botón dentro de la fila */
+.column--region--element {
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+}
+
+/* Estilo para el botón dentro de la fila */
+.column--region--button button {
+  padding: 12px 24px; /* Espaciado cómodo */
+  font-size: 1rem;
+  background-color: transparent; /* Fondo transparente para el botón */
+  color: #2ecc71; /* Texto verde */
+  border: 2px solid #2ecc71; /* Borde verde */
+  border-radius: 6px; /* Bordes redondeados */
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600; /* Peso de la fuente */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para la fila y el botón */
+.column--region--button:hover {
+  background-color: #eafaf1; /* Fondo más oscuro para toda la fila */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+.column--region--button:hover button {
+  background-color: #2ecc71; /* Fondo verde para el botón al hacer hover */
+  color: white; /* Texto blanco en el hover */
+  transform: translateY(-2px); /* Eleva el botón ligeramente */
+  border-color: #27ae60; /* Borde más oscuro al hacer hover */
+}
+
+/* Estilo para cuando la fila es clickeada */
+.column--region--button:active {
+  transform: translateY(2px); /* Hace que la fila y el botón se hundan un poco */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Vuelve la sombra a su estado inicial */
+}
+
+.column--region--button:active button {
+  transform: translateY(1px); /* Hace que el botón se hunda un poco */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Vuelve la sombra a su estado inicial */
+}
+
+/* Efecto de foco (focus) para la fila y el botón */
+.column--region--button:focus {
+  outline: none; /* Elimina el contorno predeterminado del navegador */
+  border: 2px solid #2ecc71; /* Borde verde al hacer foco en la fila */
+  box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.3); /* Sombra de foco para la fila */
+}
+
+.column--region--button:focus button {
+  outline: none; /* Eliminar el contorno del botón */
+  border-color: #2ecc71; /* Mantiene el borde verde para el botón */
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.5); /* Resplandor sutil en el foco */
+}
+
+:root {
+  --font-family-primary: "Roboto", sans-serif;
+  --font-family-secondary: "Open Sans", sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 15px;
+  --font-size-large: 18px;
+  --font-size-title: calc(var(--font-size-base) * 1.5);
+  --font-size-subtitle: calc(var(--font-size-base) * 1.2);
+  --spacing-unit: 8px;
+  --content-padding: 0.1rem 0.6rem;
+  --content-margin-bottom: 1.5rem;
+}
+
+.proyecto-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
+  font-family: var(--font-family-primary);
+  width: 80%;
+}
+
+.proyecto-info-module {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.proyecto-info__header {
+  font-size: var(--font-size-title);
+  margin-bottom: var(--content-margin-bottom);
+  font-size: 2.2rem;
+  color: #3498db;
+  background: #f0f3f4;
+}
+
+.proyecto-info__subtitle {
+  font-size: var(--font-size-subtitle);
+  margin-bottom: var(--content-margin-bottom);
+  color: #555;
+}
+
+.proyecto-info__content {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: var(--content-margin-bottom);
+}
+
+.proyecto-info__section {
+  margin-bottom: var(--content-margin-bottom);
+}
+
+.proyecto-info__highlight {
+  font-weight: bold;
+  color: #e67e22; /* Naranja elegante */
+}
+
+.proyecto-info__footer {
+  font-size: var(--font-size-small);
+  text-align: center;
+  color: #777;
+  margin-top: 2rem;
+}
+
+/* Estilos para los botones dentro del componente */
+.proyecto-info__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.proyecto-info__buttons button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #fff;
+  background: #e67e22; /* Naranja elegante */
+  border: 2px solid #d35400; /* Borde sutil */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto hover en los botones */
+.proyecto-info__buttons button:hover {
+  background: #d35400; /* Naranja más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al hacer clic en los botones */
+.proyecto-info__buttons button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+.toggle-buttons button {
+  position: relative;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #fff;
+  background: #e67e22; /* Naranja elegante */
+  border: 2px solid #d35400; /* Borde sutil */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 30%;
+}
+
+.toggle-buttons .button-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7); /* Color más suave para la descripción */
+  margin-top: 0.5rem;
+  visibility: hidden; /* Inicialmente oculto */
+  opacity: 0; /* Inicialmente oculto */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Animación suave */
+}
+
+.toggle-buttons button:hover .button-description {
+  visibility: visible; /* Visible al hacer hover */
+  opacity: 1; /* Opacidad completa */
+}
+
+.icon-button {
+  position: relative;
+  padding: 1rem;
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #e67e22;
+  border: 2px solid #d35400;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  width: 260px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--content-margin-bottom);
+}
+.icon-button img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+.icon-button .icon-desc {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  line-height: 1.4;
+  max-width: 90%;
+  transition: opacity 0.3s ease;
+}
+.icon-button:hover {
+  background-color: #d35400;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+.icon-button:hover .icon-desc {
+  color: rgb(255, 255, 255);
+}
+.icon-button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .proyecto-info__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .proyecto-info__buttons button {
+    width: 90%;
+    max-width: 300px;
+  }
+}
 #root {
   margin: 20px;
+}
+
+#modules {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#search--module,
+#regions--module {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem auto;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .search--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 45%;
+  position: sticky;
+  top: 20px;
+  /* Fondo transparente con desenfoque */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Bordes y sombreado elegante */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Espaciado */
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease-in-out;
+  /* Asegurar que no cubra otros elementos */
+  z-index: 10;
+}
+
+/* Efecto hover para más dinamismo */
+.search--container:hover {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .search--input {
@@ -344,6 +721,7 @@ tr:hover td {
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 1.5rem auto;
+  justify-content: center;
 }
 
 .alphabet--element {
@@ -354,11 +732,90 @@ tr:hover td {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 45%;
 }
 
 .lemma {
   display: inline-block;
   margin-bottom: 1.5rem;
+}
+
+/* Contenedor de los botones de alternancia */
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Botones */
+.toggle-buttons button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #fff;
+  background: #e67e22; /* Naranja elegante */
+  border: 2px solid #d35400; /* Borde sutil */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto hover */
+.toggle-buttons button:hover {
+  background: #d35400; /* Naranja más oscuro */
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al hacer clic */
+.toggle-buttons button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  #modules {
+    display: grid;
+    width: 100%;
+  }
+  .toggle-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .toggle-buttons button {
+    width: 90%;
+    max-width: 300px;
+  }
+  #search--module,
+  #regions--module,
+  .proyecto-info,
+  .proyecto-info-module {
+    display: grid;
+    width: 100%;
+  }
+  .search--container,
+  .results--container,
+  .column--region,
+  .table--content {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  #proyecto-info-module-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem auto;
+    justify-content: space-between;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

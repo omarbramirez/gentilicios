@@ -3,14 +3,58 @@
 @use 'variables';
 @use 'results';
 @use 'table';
+@use 'info';
 
 #root{
     margin: 20px;
 }
-.search--container{
-    @include mixins.flex-center-column;
-    
+#modules{
+    @include mixins.flex-center-row;
+    align-items: flex-start;
+    justify-content: center;
 }
+#search--module,
+#regions--module
+{
+    @include mixins.flex-center-row;
+    flex-wrap: wrap;
+    margin-bottom:  variables.$content-margin-bottom auto;
+    align-items: flex-start;
+    width: 100%;
+}
+.search--container {
+    @include mixins.flex-center-column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 45%;
+    position: sticky;
+    top: 20px;
+    
+    /* Fondo transparente con desenfoque */
+    background: rgba(255, 255, 255, 0.2); // Ajusta la opacidad si lo deseas
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); // Para compatibilidad con Safari
+    
+    /* Bordes y sombreado elegante */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    /* Espaciado */
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease-in-out;
+    
+    /* Asegurar que no cubra otros elementos */
+    z-index: 10;
+}
+
+/* Efecto hover para más dinamismo */
+.search--container:hover {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
 .search--input{
     margin: auto;
     margin-bottom:  variables.$content-margin-bottom;
@@ -19,6 +63,7 @@
     @include mixins.flex-center-row;
     flex-wrap: wrap;
     margin-bottom:  variables.$content-margin-bottom auto;
+    justify-content: center;
 }
 .alphabet--element{
     margin: auto 1rem;
@@ -26,9 +71,91 @@
 
 .results--container{
     @include mixins.flex-center-column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 45%;
 }
 
 .lemma{
     display: inline-block;
     margin-bottom:  variables.$content-margin-bottom;
 }
+
+/* Contenedor de los botones de alternancia */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Botones */
+  .toggle-buttons button {
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: #fff;
+    background: #e67e22; /* Naranja elegante */
+    border: 2px solid #d35400; /* Borde sutil */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Efecto hover */
+  .toggle-buttons button:hover {
+    background: #d35400; /* Naranja más oscuro */
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Efecto al hacer clic */
+  .toggle-buttons button:active {
+    transform: scale(0.95);
+    box-shadow: none;
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    #modules{
+        display: grid;
+        width: 100%;
+    }
+    .toggle-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .toggle-buttons button {
+      width: 90%;
+      max-width: 300px;
+    }
+    #search--module,
+#regions--module,
+.proyecto-info,
+.proyecto-info-module
+{
+    display: grid;
+    width: 100%;
+
+
+}
+.search--container,
+.results--container,
+.column--region,
+.table--content{
+    max-width: 100%;
+    box-sizing: border-box;
+}
+#proyecto-info-module-buttons{
+    @include mixins.flex-center-row;
+    flex-wrap: wrap;
+    margin-bottom:  variables.$content-margin-bottom auto;
+    justify-content: space-between;
+}
+  }
+  

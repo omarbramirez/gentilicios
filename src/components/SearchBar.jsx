@@ -16,6 +16,7 @@ function SearchBar() {
       try {
         const xmlDoc = await fetchXMLData();
         setData(xmlDoc);
+        setInputText("a");
       } catch (err) {
         setError(err);
       }
@@ -39,7 +40,7 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <div id="search--module">
       <div className="search--container">
         <input
           type="text"
@@ -65,31 +66,8 @@ function SearchBar() {
               </li>
             ))}
         </ul>
-        {/* {grammaticalCategories && (
-            <select name="select">
-              <option value=" ">Categoría Gramatical...</option>
-              {grammaticalCategories.map((category) => (
-                <option key={`category-${category}`} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          )} */}
       </div>
       <Results searchedData={searchedData} />
-      {/* <div className="results--container">
-        {searchedData ? (
-          searchedData.map((lemma, index) => (
-            <span key={`lemma-${index}`} className="lemma">
-              <p>
-                {lemma.lemmaSign} {lemma.categoriaGramatical}
-              </p>
-            </span>
-          ))
-        ) : (
-          <div>Loading...</div>
-        )}
-      </div> */}
     </div>
   );
 }

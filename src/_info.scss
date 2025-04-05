@@ -1,0 +1,209 @@
+@use 'mixins';
+
+:root {
+    --font-family-primary: 'Roboto', sans-serif;
+    --font-family-secondary: 'Open Sans', sans-serif;
+    --font-size-base: 16px;
+    --font-size-small: 15px;
+    --font-size-large: 18px;
+    --font-size-title: calc(var(--font-size-base) * 1.5);
+    --font-size-subtitle: calc(var(--font-size-base) * 1.2);
+
+    --spacing-unit: 8px;
+    --content-padding: 0.1rem 0.6rem;
+    --content-margin-bottom: 1.5rem;
+}
+
+.proyecto-info {
+    @include mixins.flex-center-row;
+    justify-content: space-between;
+    margin: 20px auto;
+    font-family: var(--font-family-primary);
+    width: 80%;
+
+}
+.proyecto-info-module{
+    // width: 50%;
+    padding: 12px 18px;
+    @include mixins.flex-center-column;
+    height: 100%;
+    justify-content: flex-start;
+
+}
+
+.proyecto-info__header {
+    font-size: var(--font-size-title);
+    margin-bottom: var(--content-margin-bottom);
+    font-size: 2.2rem;
+    color: #3498db;
+    background: #f0f3f4;
+}
+
+.proyecto-info__subtitle {
+    font-size: var(--font-size-subtitle);
+    margin-bottom: var(--content-margin-bottom);
+    color: #555;
+}
+
+.proyecto-info__content {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: var(--content-margin-bottom);
+}
+
+.proyecto-info__section {
+    margin-bottom: var(--content-margin-bottom);
+}
+
+.proyecto-info__highlight {
+    font-weight: bold;
+    color: #e67e22; /* Naranja elegante */
+}
+
+.proyecto-info__footer {
+    font-size: var(--font-size-small);
+    text-align: center;
+    color: #777;
+    margin-top: 2rem;
+}
+
+/* Estilos para los botones dentro del componente */
+.proyecto-info__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.proyecto-info__buttons button {
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: #fff;
+    background: #e67e22; /* Naranja elegante */
+    border: 2px solid #d35400; /* Borde sutil */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto hover en los botones */
+.proyecto-info__buttons button:hover {
+    background: #d35400; /* Naranja más oscuro */
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al hacer clic en los botones */
+.proyecto-info__buttons button:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.toggle-buttons button {
+  position: relative;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: #fff;
+  background: #e67e22; /* Naranja elegante */
+  border: 2px solid #d35400; /* Borde sutil */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 30%;
+}
+
+.toggle-buttons .button-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7); /* Color más suave para la descripción */
+  margin-top: 0.5rem;
+  visibility: hidden; /* Inicialmente oculto */
+  opacity: 0; /* Inicialmente oculto */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Animación suave */
+}
+
+.toggle-buttons button:hover .button-description {
+  visibility: visible; /* Visible al hacer hover */
+  opacity: 1; /* Opacidad completa */
+}
+
+.icon-button {
+    position: relative;
+    padding: 1rem;
+    font-family: var(--font-family-primary);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #e67e22;
+    border: 2px solid #d35400;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    width: 260px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: var(--content-margin-bottom);
+
+    img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+  
+    .icon-desc {
+      font-size: 0.85rem;
+      font-weight: normal;
+      color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+      line-height: 1.4;
+      max-width: 90%;
+      transition: opacity 0.3s ease;
+    }
+  
+    &:hover {
+      background-color: #d35400;
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  
+      .icon-desc {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  
+    &:active {
+      transform: scale(0.95);
+      box-shadow: none;
+    }
+  }
+  
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .proyecto-info__buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .proyecto-info__buttons button {
+        width: 90%;
+        max-width: 300px;
+    }
+}
