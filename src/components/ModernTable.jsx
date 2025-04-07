@@ -18,6 +18,17 @@ function Table_() {
 
   const toggleRegion = (region) => {
     setselectedRegion((prev) => (prev === region ? prev : region));
+    setSelectedProvince({
+      provincia: "",
+      provincia_gentilicio: "",
+      provincia_variante: "",
+      ciudad: "",
+      ciudad_gentilicio: "",
+      ciudad_variante: "",
+      ciudades_cantones: [],
+      gentilicios: [],
+      variantes: [],
+    });
   };
 
   const toggleProvince = (province, provinceIndex) => {
@@ -34,7 +45,7 @@ function Table_() {
       const fetchedData = await fetchTableData();
       if (fetchedData && fetchedData.length > 0) {
         setData(fetchedData);
-        setSelectedProvince(fetchedData[0]?.content?.[0] || null);
+        // setSelectedProvince(fetchedData[0]?.content?.[0] || null);
       }
     };
     loadData();
