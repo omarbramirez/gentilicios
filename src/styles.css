@@ -94,6 +94,7 @@ button {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  table-layout: auto;
 }
 
 /* Remove default form styles */
@@ -231,13 +232,11 @@ hr {
 .table--container {
   font-family: "Arial", sans-serif;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
 /* Contenedor de cada región - Similar a .lemma */
 .table--region {
   margin-bottom: 2rem;
-  padding: 1rem;
   background: #f9f9f9;
   border-radius: 8px;
   display: grid;
@@ -262,7 +261,6 @@ hr {
 
 .column--region--element {
   text-align: center;
-  min-width: 400px;
 }
 
 /* Tabla principal (derecha) */
@@ -278,6 +276,11 @@ hr {
   flex-direction: column;
   justify-content: center;
   max-width: 45%;
+  background-color: #f0f3f4;
+}
+
+tbody {
+  background-color: #eee;
 }
 
 /* Encabezados - Estilo similar a .sense-header */
@@ -295,7 +298,7 @@ th {
 
 /* Celdas - Similar a .definition */
 td {
-  padding: 10px 8px;
+  padding: 10px 0;
   border-bottom: 1px solid #eee;
   vertical-align: top;
   line-height: 1.5;
@@ -303,6 +306,7 @@ td {
   cursor: default;
   text-align: left;
   width: 33%;
+  padding: 12px 8px;
 }
 
 /* Listas internas - Estilo minimalista */
@@ -314,7 +318,8 @@ ul {
 
 li p {
   margin: 4px 0;
-  padding: 4px 0;
+  padding: 12px 8px;
+  padding-left: 0;
 }
 
 /* Estilo para la celda de región - Similar a .lemma-sign */
@@ -352,7 +357,7 @@ tr:hover td {
 /* Estilos para los botones */
 .provinces--lists > button {
   margin: 1rem;
-  padding: 10px 20px; /* Espaciado del botón */
+  padding: 8px 10px;
   font-size: 1rem;
   background-color: #3498db; /* Fondo azul elegante */
   color: white; /* Texto blanco */
@@ -400,7 +405,6 @@ tr:hover td {
 /* Estilos para la celda <td> que contiene el botón dentro de la fila */
 .column--region--element {
   text-align: center;
-  padding: 12px;
   font-weight: bold;
 }
 
@@ -458,9 +462,9 @@ tr:hover td {
 :root {
   --font-family-primary: "Roboto", sans-serif;
   --font-family-secondary: "Open Sans", sans-serif;
-  --font-size-base: 16px;
+  --font-size-base: 18px;
   --font-size-small: 15px;
-  --font-size-large: 18px;
+  --font-size-large: 21px;
   --font-size-title: calc(var(--font-size-base) * 1.5);
   --font-size-subtitle: calc(var(--font-size-base) * 1.2);
   --spacing-unit: 8px;
@@ -478,7 +482,7 @@ tr:hover td {
   width: 80%;
 }
 
-.proyecto-info-module {
+.icon-button-list {
   width: 100%;
   padding: 12px 18px;
   display: flex;
@@ -493,21 +497,15 @@ tr:hover td {
   font-size: var(--font-size-title);
   margin-bottom: var(--content-margin-bottom);
   font-size: 2.2rem;
-  color: #3498db;
-  background: #f0f3f4;
-}
-
-.proyecto-info__subtitle {
-  font-size: var(--font-size-subtitle);
-  margin-bottom: var(--content-margin-bottom);
-  color: #555;
+  color: #f0f3f4;
 }
 
 .proyecto-info__content {
   font-size: var(--font-size-base);
   line-height: 1.6;
-  color: #333;
+  color: #eee;
   margin-bottom: var(--content-margin-bottom);
+  padding: 0 2vh;
 }
 
 .proyecto-info__section {
@@ -613,13 +611,13 @@ tr:hover td {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  width: 260px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
   margin-bottom: var(--content-margin-bottom);
+  width: 33%;
 }
 .icon-button img {
   width: 42px;
@@ -652,9 +650,12 @@ tr:hover td {
   font-size: clamp(4rem, 2vw + 1rem, 3rem);
   text-align: center;
   color: #3498db;
-  margin: auto 2rem;
   margin-bottom: 1.5rem;
   white-space: wrap;
+  letter-spacing: normal;
+  line-height: 100%;
+  margin-top: 2vh;
+  margin-bottom: 10vh;
 }
 
 /* Diseño responsivo */
@@ -669,7 +670,12 @@ tr:hover td {
   }
 }
 #root {
-  margin: 20px;
+  padding: 3vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364), radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 70%), radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #modules {
@@ -689,6 +695,7 @@ tr:hover td {
   margin-bottom: 1.5rem auto;
   align-items: flex-start;
   width: 100%;
+  margin-bottom: 5vh;
 }
 
 .search--container {
@@ -701,7 +708,7 @@ tr:hover td {
   position: sticky;
   top: 20px;
   /* Fondo transparente con desenfoque */
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   /* Bordes y sombreado elegante */
@@ -716,7 +723,7 @@ tr:hover td {
 
 /* Efecto hover para más dinamismo */
 .search--container:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
@@ -747,6 +754,7 @@ tr:hover td {
   align-items: flex-start;
   width: 100%;
   max-width: 45%;
+  margin-top: 5vh;
 }
 
 .lemma {
@@ -809,7 +817,7 @@ tr:hover td {
   #search--module,
   #regions--module,
   .proyecto-info,
-  .proyecto-info-module {
+  .icon-button-list {
     display: grid;
     width: 100%;
   }
@@ -820,13 +828,23 @@ tr:hover td {
     max-width: 100%;
     box-sizing: border-box;
   }
-  #proyecto-info-module-buttons {
+  .table--content {
+    overflow-x: scroll;
+    max-width: 90vw;
+  }
+  .provinces--lists {
+    min-width: 90vw;
+  }
+  #icon-button-list-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 1.5rem auto;
     justify-content: space-between;
+  }
+  .icon-button {
+    width: auto;
   }
 }
 

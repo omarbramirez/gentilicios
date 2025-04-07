@@ -93,6 +93,7 @@ button {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  table-layout: auto;
 }
 
 /* Remove default form styles */

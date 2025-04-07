@@ -5,9 +5,19 @@
 @use 'table';
 @use 'info';
 
+
 #root{
-    margin: 20px;
+    padding: 3vw;
+    min-height: 100vh;
+    background: 
+      linear-gradient(135deg, #0f2027, #203a43, #2c5364), /* degradado principal */
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 #modules{
     @include mixins.flex-center-row;
     align-items: flex-start;
@@ -21,6 +31,7 @@
     margin-bottom:  variables.$content-margin-bottom auto;
     align-items: flex-start;
     width: 100%;
+    margin-bottom: 5vh;
 }
 .search--container {
     @include mixins.flex-center-column;
@@ -31,7 +42,7 @@
     top: 20px;
     
     /* Fondo transparente con desenfoque */
-    background: rgba(255, 255, 255, 0.2); // Ajusta la opacidad si lo deseas
+    background: rgba(255, 255, 255, 0.8); // Ajusta la opacidad si lo deseas
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); // Para compatibilidad con Safari
     
@@ -49,7 +60,7 @@
 
 /* Efecto hover para más dinamismo */
 .search--container:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
@@ -74,6 +85,7 @@
     align-items: flex-start;
     width: 100%;
     max-width: 45%;
+    margin-top: 5vh;
 }
 
 .lemma{
@@ -137,10 +149,11 @@
     #search--module,
 #regions--module,
 .proyecto-info,
-.proyecto-info-module
+.icon-button-list
 {
     display: grid;
     width: 100%;
+
 
 
 }
@@ -151,11 +164,22 @@
     max-width: 100%;
     box-sizing: border-box;
 }
-#proyecto-info-module-buttons{
+.table--content{
+    overflow-x: scroll;
+    max-width: 90vw;
+}
+.provinces--lists{
+    min-width: 90vw;
+}
+#icon-button-list-buttons{
     @include mixins.flex-center-row;
     flex-wrap: wrap;
     margin-bottom:  variables.$content-margin-bottom auto;
     justify-content: space-between;
+}
+.icon-button{
+    width: auto;
+
 }
   }
   

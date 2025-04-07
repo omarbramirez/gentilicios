@@ -101,14 +101,18 @@ function Table_() {
                   <tr>
                     <th scope="col">PROVINCIA</th>
                     <th scope="col">GENTILICIO</th>
-                    <th scope="col">VARIANTE</th>
+                    {selectedProvince.provincia_variante.length > 0 && (
+                      <th scope="col">VARIANTE</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>{selectedProvince.provincia}</td>
                     <td>{selectedProvince.provincia_gentilicio}</td>
-                    <td>{selectedProvince.provincia_variante}</td>
+                    {selectedProvince.provincia_variante.length > 0 && (
+                      <td>{selectedProvince.provincia_variante}</td>
+                    )}
                   </tr>
                 </tbody>
               </table>
@@ -117,14 +121,18 @@ function Table_() {
                   <tr>
                     <th scope="col">CAPITAL</th>
                     <th scope="col">GENTILICIO</th>
-                    <th scope="col">VARIANTE</th>
+                    {selectedProvince.ciudad_variante.length > 0 && (
+                      <th scope="col">VARIANTE</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>{selectedProvince.ciudad}</td>
                     <td>{selectedProvince.ciudad_gentilicio}</td>
-                    <td>{selectedProvince.ciudad_variante}</td>
+                    {selectedProvince.ciudad_variante.length > 0 && (
+                      <td>{selectedProvince.ciudad_variante}</td>
+                    )}
                   </tr>
                 </tbody>
               </table>
@@ -133,7 +141,9 @@ function Table_() {
                   <tr>
                     <th scope="col">CIUDAD/CANTÓN</th>
                     <th scope="col">GENTILICIO</th>
-                    <th scope="col">VARIANTE</th>
+                    {selectedProvince.variantes.length > 1 && (
+                      <th scope="col">VARIANTE</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
@@ -159,13 +169,15 @@ function Table_() {
                       </ul>
                     </td>
                     <td>
-                      <ul>
-                        {selectedProvince.variantes?.map((variante, i) => (
-                          <li key={`variante-${variante}-${i}`}>
-                            <p>{variante !== "" ? variante : "\u00A0"}</p>
-                          </li>
-                        ))}
-                      </ul>
+                      {selectedProvince.variantes.length > 1 && (
+                        <ul>
+                          {selectedProvince.variantes.map((variante, i) => (
+                            <li key={`variante-${variante}-${i}`}>
+                              <p>{variante !== "" ? variante : "\u00A0"}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </td>
                   </tr>
                 </tbody>

@@ -34,15 +34,10 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        display: "grid",
-        width: "100%",
-      }}
-    >
-      <h1 className="header">Glosario de Gentilicios del Ecuador</h1>
+    <div>
+      <h1 className="header">Glosario de Gentilicios del Ecuador</h1>
       {showButtons && (
-        <div className="proyecto-info-module">
+        <div className="icon-button-list">
           <button onClick={toggleInfo} className="icon-button">
             <img src={importantIcon} alt="justificación" />
             <b>Sobre este proyecto</b>
@@ -60,7 +55,7 @@ function App() {
               capitales y cantones del Ecuador.
             </span>
           </button>
-          <button onClick={toggleSearchBar} className="icon-button">
+          <button onClick={toggleModernTable} className="icon-button">
             <img src={mapIcon} alt="regiones" />
             <b>Tabla general de gentilicios</b>
             <span className="icon-desc">

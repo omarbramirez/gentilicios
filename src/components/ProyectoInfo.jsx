@@ -4,7 +4,7 @@ const ProyectoInfo = ({ toggleSearchBar, toggleModernTable }) => {
   return (
     <div className="proyecto-info">
       <h1 className="proyecto-info__header">Sobre este proyecto</h1>
-      <p className="proyecto-info__subtitle">
+      <p className="proyecto-info__content">
         Conoce el trabajo de la Comisión de Lexicografía detrás de esta
         herramienta y la importancia de preservar el patrimonio lingüístico
         ecuatoriano.

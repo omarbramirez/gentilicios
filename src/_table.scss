@@ -9,17 +9,14 @@
 .table--container {
   font-family: 'Arial', sans-serif;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
 /* Contenedor de cada región - Similar a .lemma */
 .table--region {
   margin-bottom: 2rem;
-  padding: 1rem;
   background: #f9f9f9;
   border-radius: 8px;
   display: grid;
-//   grid-template-columns: 200px 1fr;
   gap: 1rem;
   @include mixins.flex-center-row;
   flex-wrap: wrap;
@@ -39,7 +36,6 @@
 }
 .column--region--element{
     text-align: center;
-    min-width: 400px;
 }
 /* Tabla principal (derecha) */
 .table--region > table {
@@ -48,12 +44,17 @@
   background: white;
   border-radius: 6px;
 
+
 }
 
 .table--content{
   @include mixins.flex-center-column;
   max-width: 45%;
+  background-color: #f0f3f4;
+}
 
+tbody{
+  background-color: #eee;
 }
 
 /* Encabezados - Estilo similar a .sense-header */
@@ -71,7 +72,7 @@ th {
 
 /* Celdas - Similar a .definition */
 td {
-  padding: 10px 8px;
+  padding: 10px 0;
   border-bottom: 1px solid #eee;
   vertical-align: top;
   line-height: 1.5;
@@ -79,18 +80,23 @@ td {
   cursor: default;
   text-align: left;
   width: 33%;
+  padding: 12px 8px;
+
 }
+
 
 /* Listas internas - Estilo minimalista */
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  
 }
 
 li p {
   margin: 4px 0;
-  padding: 4px 0;
+  padding: 12px 8px;
+  padding-left: 0;
 }
 
 /* Estilo para la celda de región - Similar a .lemma-sign */
@@ -128,7 +134,7 @@ tr:hover td {
 /* Estilos para los botones */
 .provinces--lists > button {
   margin: 1rem;
-  padding: 10px 20px; /* Espaciado del botón */
+  padding: 8px 10px; 
   font-size: 1rem;
   background-color: #3498db; /* Fondo azul elegante */
   color: white; /* Texto blanco */
@@ -176,7 +182,6 @@ tr:hover td {
 /* Estilos para la celda <td> que contiene el botón dentro de la fila */
 .column--region--element {
   text-align: center;
-  padding: 12px;
   font-weight: bold;
 }
 

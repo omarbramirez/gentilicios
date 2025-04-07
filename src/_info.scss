@@ -4,9 +4,9 @@
 :root {
     --font-family-primary: 'Roboto', sans-serif;
     --font-family-secondary: 'Open Sans', sans-serif;
-    --font-size-base: 16px;
+    --font-size-base: 18px;
     --font-size-small: 15px;
-    --font-size-large: 18px;
+    --font-size-large: 21px;
     --font-size-title: calc(var(--font-size-base) * 1.5);
     --font-size-subtitle: calc(var(--font-size-base) * 1.2);
 
@@ -23,7 +23,7 @@
     width: 80%;
 
 }
-.proyecto-info-module{
+.icon-button-list{
     width: 100%;
     padding: 12px 18px;
     @include mixins.flex-center-row;
@@ -37,21 +37,16 @@
     font-size: var(--font-size-title);
     margin-bottom: var(--content-margin-bottom);
     font-size: 2.2rem;
-    color: #3498db;
-    background: #f0f3f4;
+    color: #f0f3f4;
 }
 
-.proyecto-info__subtitle {
-    font-size: var(--font-size-subtitle);
-    margin-bottom: var(--content-margin-bottom);
-    color: #555;
-}
 
 .proyecto-info__content {
     font-size: var(--font-size-base);
     line-height: 1.6;
-    color: #333;
+    color: #eee;
     margin-bottom: var(--content-margin-bottom);
+    padding: 0 2vh;
 }
 
 .proyecto-info__section {
@@ -157,13 +152,13 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    width: 260px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.6rem;
     margin-bottom: var(--content-margin-bottom);
+    width: 33%;
 
     img {
       width: 42px;
@@ -201,10 +196,13 @@
     font-size: clamp(4rem, 2vw + 1rem, 3rem);
     text-align: center;
     color: #3498db;
-    margin: auto 2rem;
     margin-bottom: variables.$content-margin-bottom;
     white-space: wrap;
-    
+    letter-spacing: normal;
+    line-height: 100%;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+
   }
 
 /* Diseño responsivo */
