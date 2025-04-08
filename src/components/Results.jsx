@@ -5,7 +5,12 @@ function Results({ searchedData }) {
         searchedData.map((lemma, lemmaIndex) => (
           <div key={`lemma-${lemmaIndex}`} className="lemma">
             <h2 className="lemma-sign">{lemma.lemmaSign}</h2>
-
+            {lemma.variants && (
+              <p>
+                <span className="variantes-title">variantes: </span>
+                <span>{lemma.variants}</span>
+              </p>
+            )}
             {lemma.sense?.map((sense, senseIndex) => (
               <div key={`sense-${senseIndex}`} className="sense">
                 {/* Validación para Sense Number y Categoría Gramatical */}
@@ -74,6 +79,12 @@ function Results({ searchedData }) {
                 ))}
               </div>
             ))}
+            {lemma.variants && (
+              <p className="observaciones">
+                <span className="observaciones-title">Observaciones: </span>
+                <span>{lemma.observations}</span>
+              </p>
+            )}
           </div>
         ))
       ) : (

@@ -6,7 +6,6 @@ export const handleSearching = (input, database)=>{
             let limit= input.length
             let fragment = lemma.lemmaSign.slice(0,limit).toLowerCase()
             if(fragment === input.toLowerCase()){
-                console.log(fragment, input.toLowerCase())
                 databasefiltered.push(lemma)
             }
         })

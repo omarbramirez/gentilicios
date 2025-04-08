@@ -17,7 +17,7 @@
     font-size: 1.5rem;
   }
   
-  .sense {
+  .sense{
     margin-top: 1rem;
     padding-left: 1rem;
     border-left: 3px solid #eee;
@@ -77,4 +77,18 @@
   .bold{
     font-weight: bold;
   color: #1c1c1c;
+  }
+  .observaciones {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    font-size: 0.9em;
+  }
+  .observaciones-title{
+    font-weight: bold;
+    color: #3498db;
+  }
+
+  .variantes-title{
+    font-weight: bold;
+    color: #7f8c8d;
   }

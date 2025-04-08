@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {complementaryFields} from "../../public/db/complementaryFields"
 
 export const fetchXMLData = async()=>{
     let definitionsArray=[];
@@ -70,11 +71,18 @@ export const fetchXMLData = async()=>{
             while(counter < limit) {
                 let lemma = {
                     lemmaSign: '',
+                    observations:'',
+                    variants:'',
                     sense:[]
                 }
                 lemma["lemmaSign"]= definitionElements[counter].getElementsByTagName("Lemma.LemmaSign")[0]?.textContent;
+                complementaryFields.map(function(currentLemma){
+                    if(currentLemma.lemmaSign === lemma.lemmaSign){
+                        lemma["observations"] = currentLemma.observations;
+                        lemma["variants"] = currentLemma.variants;
+                    }
+                })
                 let allSenses = definitionElements[counter].getElementsByTagName("Sense");
-                
                 definitionsArray.push(lemma)
                 getSenses(lemma, allSenses)
                 counter += 1;
@@ -82,6 +90,7 @@ export const fetchXMLData = async()=>{
         }
 
         getLemmas();
+        console.log(definitionsArray[63],definitionsArray[46],definitionsArray[70])
         return definitionsArray;
     }catch(err){
         console.error('Error converting XML into JSON', err)
@@ -93,7 +102,6 @@ export const fetchTableData = async()=>{
     try{
         const response = await axios.get('/db/_tablaDeGentilicios.json');
         const regionsArray = response.data.regions;
-        console.log(response.data.regions)
         return regionsArray;
     }catch(err){
         console.error('Error fetching tableData', err)

@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="header">Glosario de Gentilicios del Ecuador</h1>
+      {/* <h1 className="header">Glosario de gentilicios del Ecuador</h1> */}
       {showButtons && (
         <div className="icon-button-list">
           <button onClick={toggleInfo} className="icon-button">

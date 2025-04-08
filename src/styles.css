@@ -228,6 +228,22 @@ hr {
   color: #1c1c1c;
 }
 
+.observaciones {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  font-size: 0.9em;
+}
+
+.observaciones-title {
+  font-weight: bold;
+  color: #3498db;
+}
+
+.variantes-title {
+  font-weight: bold;
+  color: #7f8c8d;
+}
+
 /* Contenedor principal - Mantiene el estilo original */
 .table--container {
   font-family: "Arial", sans-serif;
@@ -656,6 +672,7 @@ tr:hover td {
   line-height: 100%;
   margin-top: 2vh;
   margin-bottom: 10vh;
+  font-family: "Times New Roman", Times, serif;
 }
 
 /* Diseño responsivo */

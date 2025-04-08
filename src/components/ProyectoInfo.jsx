@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProyectoInfo = ({ toggleSearchBar, toggleModernTable }) => {
+const ProyectoInfo = () => {
   return (
     <div className="proyecto-info">
       <h1 className="proyecto-info__header">Sobre este proyecto</h1>
