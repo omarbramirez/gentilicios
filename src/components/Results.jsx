@@ -79,7 +79,7 @@ function Results({ searchedData }) {
                 ))}
               </div>
             ))}
-            {lemma.variants && (
+            {lemma.observations && (
               <p className="observaciones">
                 <span className="observaciones-title">Observaciones: </span>
                 <span>{lemma.observations}</span>
